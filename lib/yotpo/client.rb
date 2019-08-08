@@ -17,6 +17,7 @@ require 'yotpo/api/image'
 require 'yotpo/api/owner_feature'
 require 'yotpo/api/owner_feature_setting'
 require 'yotpo/api/product'
+require 'yotpo/api/product_group'
 require 'yotpo/api/purchase'
 require 'yotpo/api/reminder'
 require 'yotpo/api/review'
@@ -34,6 +35,7 @@ module Yotpo
     include Yotpo::OwnerFeature
     include Yotpo::OwnerFeatureSetting
     include Yotpo::Product
+    include Yotpo::ProductGroup
     include Yotpo::Reminder
     include Yotpo::Review
     include Yotpo::User
