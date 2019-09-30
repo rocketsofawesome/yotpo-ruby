@@ -63,5 +63,15 @@ module Yotpo
       app_key = params[:app_key]
       post("apps/#{app_key}/products_apps_matches/get_matches/", request, headers)
     end
+
+    def update_mass_products(params, headers = {})
+      request = {
+        utoken: params[:utoken],
+        products: params[:products]
+      }
+
+      app_key = params[:app_key]
+      put("https://api.yotpo.com/apps/#{app_key}/products/mass_update", request, headers)
+    end
   end
 end

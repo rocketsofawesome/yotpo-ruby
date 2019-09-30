@@ -88,4 +88,37 @@ describe Yotpo::Product do
     it { should be_a ::Hashie::Mash }
     it { should respond_to? :products}
   end
+
+  describe '#update_mass_products' do
+    before(:all) do
+      update_mass_products_request = {
+        products: {
+          '123': {
+                name: 'Name',
+                url: 'http://example.com/product/1',
+                image_url: 'http://example_product_image_url1.com',
+                price: '20',
+                blacklisted: true
+          },
+          '456': {
+                name: 'Name',
+                url: 'http://example.com/product/2',
+                image_url: 'http://example_product_image_url2.com',
+                price: '20',
+                blacklisted: true
+          },
+        },
+        utoken: @utoken,
+        app_key: @app_key
+      }
+      VCR.use_cassette('update_mass_products') do
+        @response = Yotpo.update_mass_products(update_mass_products_request)
+      end
+    end
+
+    subject { @response.body }
+    it { should be_a ::Hashie::Mash }
+    it { should respond_to :code }
+    it { should respond_to :message }
+  end
 end
