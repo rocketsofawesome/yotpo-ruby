@@ -71,7 +71,7 @@ module Yotpo
       }
 
       app_key = params[:app_key]
-      put("https://api.yotpo.com/apps/#{app_key}/products/mass_update", request, headers)
+      put("apps/#{app_key}/products/mass_update", request, headers)
     end
   end
 end
