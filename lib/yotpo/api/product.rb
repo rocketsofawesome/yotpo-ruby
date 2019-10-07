@@ -73,5 +73,13 @@ module Yotpo
       app_key = params[:app_key]
       put("apps/#{app_key}/products/mass_update", request, headers)
     end
+
+    def retrieve_all_products(params, headers = {})
+      request = {
+        utoken: params[:utoken]
+      }
+      app_key = params[:app_key]
+      get("v1/apps/#{app_key}/products", request, headers)
+    end
   end
 end
